@@ -1,10 +1,11 @@
+cat > README.md << 'READMEEOF'
 # 🎵 Asylum
 
-Терминальный плеер для SoundCloud с красивым ASCII-артом, системой избранного и автоматическим переключением треков.
+Терминальный плеер для SoundCloud с красивым ASCII-артом Gengar, системой избранного и автоматическим переключением треков.
 
 ![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-blue?style=for-the-badge)
 
 ## ✨ Возможности
 
@@ -12,11 +13,12 @@
 - 👻 Красивый ASCII-арт Gengar вместо обложек
 - ⭐ Система избранных треков (сохраняется между сессиями)
 - ⏭️ Автоматическое переключение треков
-- ️ Управление громкостью и перемоткой
+- 🎛️ Управление громкостью и перемоткой
 - 🔄 Поддержка SOCKS5/HTTP прокси (для регионов с блокировками)
 - 💾 Локальное кэширование треков
+- 🪟 Поддержка Windows (экспериментально)
 
-##  Установка
+## 📦 Установка
 
 ### Зависимости
 
@@ -34,11 +36,17 @@
 
     brew install yt-dlp ffmpeg
 
+**Windows (через Scoop):**
+
+    scoop install yt-dlp ffmpeg
+
 **Windows (через Chocolatey):**
 
     choco install yt-dlp ffmpeg
 
 ### Компиляция из исходников
+
+**Linux / macOS:**
 
     # Клонируйте репозиторий
     git clone https://github.com/ВАШ_НИК/asylum.git
@@ -53,9 +61,23 @@
     # Установите в систему (опционально)
     sudo install -m 755 asylum /usr/local/bin/asylum
 
+**Windows (PowerShell):**
+
+    # Клонируйте репозиторий
+    git clone https://github.com/ВАШ_НИК/asylum.git
+    cd asylum
+
+    # Установите Go зависимости
+    go mod download
+
+    # Скомпилируйте
+    go build -o asylum.exe main.go
+
 ## 🚀 Использование
 
 ### Базовый запуск
+
+**Linux / macOS:**
 
     # Если SoundCloud доступен в вашем регионе
     asylum
@@ -64,13 +86,42 @@
     export SC_PROXY="socks5://127.0.0.1:1080"
     asylum
 
+**Windows (PowerShell):**
+
+    # Если SoundCloud доступен в вашем регионе
+    .\asylum.exe
+
+    # Если SoundCloud заблокирован (РФ, СНГ)
+    $env:SC_PROXY="socks5://127.0.0.1:1080"
+    .\asylum.exe
+
 ### Настройка прокси
 
-Добавьте в `~/.bashrc` или `~/.zshrc`:
+**Linux / macOS** — добавьте в `~/.bashrc` или `~/.zshrc`:
 
     export SC_PROXY="socks5://127.0.0.1:1080"
 
-## ⌨️ Управление
+**Windows** — добавьте в профиль PowerShell (`$PROFILE`):
+
+    $env:SC_PROXY="socks5://127.0.0.1:1080"
+
+## ⚠️ Windows (экспериментально)
+
+Windows-поддержка работает, но с ограничениями:
+
+- ✅ Все функции плеера работают
+- ✅ Прокси (SOCKS5/HTTP) поддерживается
+- ⚠️ **Braille-арт Gengar отображается только в Windows Terminal** (не в cmd.exe)
+- ⚠️ Требуется шрифт с поддержкой braille-символов: Cascadia Code, Fira Code или JetBrains Mono
+
+### Требования для Windows
+
+1. Установите [Windows Terminal](https://aka.ms/terminal)
+2. Установите шрифт [Cascadia Code](https://github.com/microsoft/cascadia-code)
+3. Установите зависимости через Scoop или Chocolatey (см. выше)
+4. Скомпилируйте и запустите в Windows Terminal
+
+## ️ Управление
 
 | Клавиша | Действие |
 |---------|----------|
@@ -86,7 +137,7 @@
 | `Esc` | Выйти из режима избранного / закрыть поиск |
 | `q` / `Ctrl+C` | Выход из программы |
 
-##  Структура проекта
+## 📂 Структура проекта
 
     asylum/
     ├── main.go              # Основной код приложения
@@ -105,7 +156,7 @@
 
 ## 🎨 ASCII-арт
 
-Хотите изменить на другой арт? Просто отредактируйте файл `gengar.txt` и пересоберите:
+Хотите изменить Gengar на другого персонажа? Просто отредактируйте файл `gengar.txt` и пересоберите:
 
     nano gengar.txt  # Вставьте новый ASCII-арт
     go build -o asylum main.go
@@ -139,4 +190,4 @@ MIT License — см. файл [LICENSE](LICENSE) для деталей.
 
 ---
 
-**Made ancientreligionbtw #lowtier**
+**Made by ancientreligionbtw #lowtier**
