@@ -48,7 +48,7 @@
 **Linux / macOS:**
 
     # Клонируйте репозиторий
-    git clone https://github.com/ВАШ_НИК/asylum.git
+    git clone https://github.com/somniphob1aXD/asylum.git
     cd asylum
 
     # Установите Go зависимости
@@ -63,7 +63,7 @@
 **Windows (PowerShell):**
 
     # Клонируйте репозиторий
-    git clone https://github.com/ВАШ_НИК/asylum.git
+    git clone https://github.com/somniphob1aXD/asylum.git
     cd asylum
 
     # Установите Go зависимости
